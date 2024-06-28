@@ -1,0 +1,60 @@
+[
+    
+        {
+            "id": 5,
+            "url": null,
+            "icon": "fa fa-users",
+            "displayName": "Productores",
+            "subMenu": [
+                {
+                    "id": 2,
+                    "url": "producer.list",
+                    "icon": "fa fa-users",
+                    "displayName": "Listar Productores",
+                    "subMenu": []
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "url": null,
+            "icon": "fa fa-home",
+            "displayName": "Propiedades",
+            "subMenu": [
+                {
+                    "id": 2,
+                    "url": "property.list",
+                    "icon": "fa fa-home",
+                    "displayName": "Listar Propiedades",
+                    "subMenu": []
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "url": null,
+            "icon": "fa fa-calendar",
+            "displayName": "Planificacion"
+        },
+        {
+            "id": 2,
+            "url": null,
+            "icon": "fa fa-print",
+            "displayName": "Rreportes"
+        },
+        {
+            "id": 1,
+            "url": null,
+            "icon": "fa fa-cog",
+            "displayName": "Administracion",
+            "subMenu": [
+                {
+                    "id": 2,
+                    "url": "security.users",
+                    "icon": "fa fa-users",
+                    "displayName": "Usuarios",
+                    "subMenu": []
+                }
+            ]
+        }
+]

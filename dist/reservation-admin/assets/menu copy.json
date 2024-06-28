@@ -1,0 +1,108 @@
+[
+    {
+        "id": 24,
+        "url": "seguimiento",
+        "icon": "fa fa-lock",
+        "displayName": "H2: Seguimiento Ran",
+        "subMenu": []
+    },
+    {
+        "id": 63,
+        "url": "monitoreo.radar",
+        "icon": "fa fa-lock",
+        "displayName": "H4: Monitoreo Radar",
+        "subMenu": []
+    },
+    {
+        "id": 36,
+        "url": "monitoreo.neiran",
+        "icon": "fa fa-lock",
+        "displayName": "H5: Monitoreo Neiran",
+        "subMenu": []
+    },
+    {
+        "id": 66,
+        "url": "monitoreo.busyhour",
+        "icon": "fa fa-lock",
+        "displayName": "H6: Monitoreo Busy Hour",
+        "subMenu": []
+    },
+    {
+        "id": 45,
+        "url": "monitoreo.kpi",
+        "icon": "fa fa-lock",
+        "displayName": "H7: Monitoreo Evaluación KPIs",
+        "subMenu": []
+    },
+    {
+        "id": 54,
+        "url": "monitoreo.cobertura",
+        "icon": "fa fa-lock",
+        "displayName": "H8: Monitoreo Flujo Cobertura",
+        "subMenu": []
+    },
+    {
+        "id": 57,
+        "url": "monitoreo.calidad",
+        "icon": "fa fa-lock",
+        "displayName": "H8: Monitoreo Flujo Calidad",
+        "subMenu": []
+    },
+    {
+        "id": 60,
+        "url": "monitoreo.capacidad",
+        "icon": "fa fa-lock",
+        "displayName": "H8: Monitoreo Flujo Capacidad",
+        "subMenu": []
+    },
+    {
+        "id": 1,
+        "url": null,
+        "icon": "fa fa-lock",
+        "displayName": "Administracion",
+        "subMenu": [
+            {
+                "id": 2,
+                "url": "security.users",
+                "icon": "fa fa-users",
+                "displayName": "Usuarios",
+                "subMenu": []
+            },
+            {
+                "id": 3,
+                "url": "security.roles",
+                "icon": "fa fa-user-plus",
+                "displayName": "Perfiles",
+                "subMenu": []
+            },
+            {
+                "id": 17,
+                "url": "security.kpis",
+                "icon": "fa fa-wifi",
+                "displayName": "H4: Kpis Radar",
+                "subMenu": []
+            },
+            {
+                "id": 30,
+                "url": "security.neiran",
+                "icon": "fa fa-lock",
+                "displayName": "H5: Comandos Neiran",
+                "subMenu": []
+            },
+            {
+                "id": 39,
+                "url": "security.kpis.thresholds",
+                "icon": "fa fa-lock",
+                "displayName": "H7: Threshold de Kpis",
+                "subMenu": []
+            },
+            {
+                "id": 48,
+                "url": "security.thresholds.evaluation",
+                "icon": "fa fa-lock",
+                "displayName": "H8: Thresholds Evaluación",
+                "subMenu": []
+            }
+        ]
+    }
+]

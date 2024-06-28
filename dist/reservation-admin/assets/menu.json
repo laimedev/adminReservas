@@ -1,0 +1,97 @@
+[
+    
+        
+        {
+            "id": 8,
+            "url": null,
+            "icon": "fa fa-save",
+            "displayName": "REGISTRO",
+            "subMenu": [
+                {
+                    "id": 2,
+                    "url": "",
+                    "icon": "fa fa-calendar",
+                    "displayName": "Reservar cancha",
+                    "subMenu": []
+                },
+                {
+                    "id": 1,
+                    "url": "clients",
+                    "icon": "fa fa-users",
+                    "displayName": "Mis clientes",
+                    "subMenu": []
+                }
+                
+            ]
+        },
+        {
+            "id": 5,
+            "url": null,
+            "icon": "fa fa-folder",
+            "displayName": "REPORTES",
+            "subMenu": [
+                {
+                    "id": 2,
+                    "url": "reservas",
+                    "icon": "fa fa-check",
+                    "displayName": "Alquiler / Reserva",
+                    "subMenu": []
+                },
+                {
+                    "id": 1,
+                    "url": "pagos",
+                    "icon": "fa fa-credit-card",
+                    "displayName": "Pagos",
+                    "subMenu": []
+                }
+                
+            ]
+        },
+        {
+            "id": 3,
+            "url": null,
+            "icon": "fa fa-cog",
+            "displayName": "CONFIGURACIONES",
+            "subMenu": [
+                {
+                    "id": 4,
+                    "url": "perfil",
+                    "icon": "fa fa-user",
+                    "displayName": "Mi perfil",
+                    "subMenu": []
+                },
+                {
+                    "id": 3,
+
+                    "url": "ajustes",
+                    "icon": "fa fa-tools",
+                    "displayName": "Ajustes",
+                    "subMenu": []
+                },
+                {
+                    "id": 2,
+                    "url": "campos",
+                    "icon": "fa fa-futbol",
+                    "displayName": "Campos deportivos",
+                    "subMenu": []
+                }
+            ]
+        },
+        {
+            "id": 9,
+            "url": null,
+            "icon": "fa fa-lock",
+            "displayName": "ADMINISTRACION",
+            "subMenu": [
+                {
+                    "id": 2,
+                    "url": "users",
+                    "icon": "fa fa-user-lock",
+                    "displayName": "Usuarios",
+                    "subMenu": []
+                }
+            ]
+        }
+        
+       
+]

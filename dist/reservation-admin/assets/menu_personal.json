@@ -1,0 +1,42 @@
+[
+    
+        {
+            "id": 7,
+            "url": null,
+            "icon": "fa fa-home",
+            "displayName": "PROYECTOS",
+            "subMenu": [
+                {
+                    "id": 2,
+                    "url": "mis.proyectos.list",
+                    "icon": "fa fa-users",
+                    "displayName": "Listado de proyectos",
+                    "subMenu": []
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "url": null,
+            "icon": "fa fa-print",
+            "displayName": "REPORTES",
+            "subMenu": [
+                {
+                    "id": 4,
+                    "url": "",
+                    "icon": "fa fa-users",
+                    "displayName": "Tiempo por proyecto",
+                    "subMenu": []
+                },
+                {
+                    "id": 3,
+                    "url": "",
+                    "icon": "fa fa-users",
+                    "displayName": "Tiempo por empleado",
+                    "subMenu": []
+                }
+            ]
+        }
+        
+       
+]
