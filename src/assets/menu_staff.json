@@ -1,0 +1,101 @@
+[
+    
+        {
+            "id": 7,
+            "url": null,
+            "icon": "fa fa-home",
+            "displayName": "CLIENTES",
+            "subMenu": [
+                {
+                    "id": 2,
+                    "url": "cliente.list",
+                    "icon": "fa fa-users",
+                    "displayName": "Listado de clientes",
+                    "subMenu": []
+                },
+                {
+                    "id": 2,
+                    "url": "proyecto.list",
+                    "icon": "fa fa-users",
+                    "displayName": "Listado de proyectos",
+                    "subMenu": []
+                }
+            ]
+        },
+        {
+            "id": 6,
+            "url": null,
+            "icon": "fa fa-database",
+            "displayName": "PERSONAL",
+            "subMenu": [
+                {
+                    "id": 2,
+                    "url": "empleado.list",
+                    "icon": "fa fa-users",
+                    "displayName": "Listado de empleados",
+                    "subMenu": []
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "url": null,
+            "icon": "fa fa-book",
+            "displayName": "TRABAJOS",
+            "subMenu": [
+                {
+                    "id": 4,
+                    "url": "trabajo.list",
+                    "icon": "fa fa-users",
+                    "displayName": "Listado de trabajos",
+                    "subMenu": []
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "url": null,
+            "icon": "fa fa-print",
+            "displayName": "REPORTES",
+            "subMenu": [
+                {
+                    "id": 4,
+                    "url": "",
+                    "icon": "fa fa-users",
+                    "displayName": "Tiempo por proyecto",
+                    "subMenu": []
+                },
+                {
+                    "id": 3,
+                    "url": "",
+                    "icon": "fa fa-users",
+                    "displayName": "Tiempo por empleado",
+                    "subMenu": []
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "url": null,
+            "icon": "fa fa-cog",
+            "displayName": "CONFIGURACIONES",
+            "subMenu": [
+                {
+                    "id": 4,
+                    "url": "departamento.list",
+                    "icon": "fa fa-users",
+                    "displayName": "Departamentos",
+                    "subMenu": []
+                },
+                {
+                    "id": 3,
+                    "url": "cargo.list",
+                    "icon": "fa fa-users",
+                    "displayName": "Cargos",
+                    "subMenu": []
+                }
+            ]
+        }
+        
+       
+]

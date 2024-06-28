@@ -1,0 +1,33 @@
+<nav class="navbarxxx navbar_ navbar-expand-lg navbar-light bg-primary navbar-fixed-top">
+    <button (click)="toggleMenu()" type="button" class="navbar-brand"
+        style="border: 0;background-color: transparent; margin-left: 10px;">
+        <i style="color: #fff;" class="fa fa-bars icon"></i>
+    </button>
+    <a class="navbar-brand" href="#"><span class="letra-entel">Sistema de reserva</span> <span class="letra-entel" *ngIf="typeUser === '2'"></span> <span class="letra-entel" *ngIf="typeUser === '1'"></span> <span class="letra-entel" *ngIf="typeUser === '0'"></span></a>
+
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+        <div class=" dropdown__ navbar-nav">
+
+            <a href="#" class="nav-link dropdown-toggle" style="color: #fff;" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+
+
+               Hola {{user}}  <i class="icon-power fa fa-power-off"></i> 
+            </a>
+            <div class="dropdown-menu dropdown-menu-right___" aria-labelledby="navbarDropdown">
+                <div class=" text-center">
+                    <h4 class="username">Hola </h4>
+                    <!-- <p>admin@entel.pe</p> -->
+                    <div class="btn-group" role="group">
+                        <!-- <a href="#" class="btn btn-light"><i class="fa fa-user"></i> Perfil</a> -->
+
+                        <a (click)="logOut()" class="btn btn-success" style="color: #fff;">
+                            <i class="fas fa-sign-out-alt"></i> Salir
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- </div> -->
+        </div>
+    </div>
+</nav>

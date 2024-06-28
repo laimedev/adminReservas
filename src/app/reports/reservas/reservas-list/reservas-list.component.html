@@ -1,0 +1,159 @@
+<div class="main-content">
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-header" style="background-color: #fff">
+                    <div class="row">
+                        <div class="col-12 ml-4 mt-3">
+                            <span class="letra-cabecera">Reporte de reservas</span>
+                        </div>
+                    </div>
+
+
+                    <div class="card-body mt-3" >
+                        <form  [formGroup]="filterGroup">
+                          <div class="form-row ml-0 mr-0">
+                            <div class="col-lg-9 p-0 m-0">
+                              <div class="row">
+                                <mat-form-field appearance="outline" class="col-lg-3   mat-form-field-rounded">
+                                  <mat-label>Fecha inicio</mat-label> 
+                                  <input  matInput [matDatepicker]="picker1" name="date_form" 
+                                  id="miid" placeholder="Fecha de Inicio" (click)="picker1.open()" formControlName="startDate">
+                                  <mat-icon matSuffix>date_range</mat-icon>
+                                  <mat-datepicker #picker1></mat-datepicker>
+                                </mat-form-field>
+                  
+                                <mat-form-field appearance="outline" class="col-lg-3">
+                                  <mat-label>Fecha fin</mat-label>
+                                  <input matInput [matDatepicker]="picker2" name="" date_to formControlName="endDate"
+                                    placeholder="Fecha de Fin" (click)="picker2.open()">
+                                    <mat-icon matSuffix>date_range</mat-icon>
+                                    <mat-datepicker #picker2></mat-datepicker>
+                                </mat-form-field>
+                  
+                                <mat-form-field appearance="outline" class="col-lg-2">
+                                  <mat-label>Estado</mat-label>
+                                  <mat-select name="message" formControlName="status" >
+                                    <mat-option value="">--</mat-option>
+                                    <mat-option value="CONFIRMADO">CONFIRMADO</mat-option>
+                                    <mat-option value="SIN CONFIRMAR">SIN CONFIRMAR</mat-option>
+                                  </mat-select>
+                                </mat-form-field>
+
+
+                                
+
+                  
+                                <div class="col-lg-1">
+                                  <button class="btn btn-size btn-primary mt-1" (click)="filter()"><i class="fas fa-search mr-1"> </i> </button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </form>
+                        <hr class="p-0 m-0">
+                      </div>
+
+
+                      <div class="card-body pt-0  justify-content-end">
+                        <div class="row align-items-center">
+                          <div class=" mr-auto"> 
+                            <mat-form-field appearance="outline" class="pt-2 ml-1 col-7">
+                              <mat-select name="message" value="10" (selectionChange)="onSelectChange($event)" #event disableOptionCentering>
+                                <mat-option value="2">2</mat-option>
+                                <mat-option value="5">5</mat-option>
+                                <mat-option value="10">10</mat-option>
+                                <mat-option value="15">15</mat-option>
+                                <mat-option value="50">50</mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                          </div>
+                          
+                          <div class="mt-1" [formGroup]="filterGroup">
+                            <div [formGroup]="searchGroup">
+                              <!-- <mat-form-field appearance="outline">
+                                <mat-icon matPrefix style="margin-left: 10px;">search</mat-icon>
+                                <input matInput placeholder="Buscar" formControlName="searchTerm"/>
+                              </mat-form-field> -->
+                              <mat-form-field  class="w-100" appearance="outline">
+                                <mat-label>Seleccione un cliente</mat-label>
+                                <mat-select placeholder="Seleccione un cliente" (selectionChange)="onSelectionChange($event)" formControlName="searchTerm">
+                                  <mat-select-filter [placeholder]="'Buscar cliente por nombres y dni'" [displayMember]="'nombreCompletoConDNI'" [array]="variables" (filteredReturn)="filteredList5 = $event"></mat-select-filter>
+                                  <mat-option *ngFor="let item of filteredList5" [value]="item">
+                                    {{item.nombreCompletoConDNI}}
+                                  </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+
+                            </div>
+                          </div>
+              
+                          <div class="p-2" style="margin-top: -15px;">
+                            <button class="btn btn-size btn-primary"  (click)="resetTable()"><i class="fas fa-list mr-1"> </i> </button>&nbsp;
+                            <button class="btn btn-size btn-primary" (click)="goReserve()" ><i class="fas fa-calendar mr-1"   > </i> NUEVO</button>&nbsp;
+                          </div>
+                          
+                          <div class="pr-2" style="margin-top: -15px;">
+                            <button  class="btn btn-size btn-success" (click)="exportFile()"><i class="fas fa-file-excel mr-2"> </i>EXPORTAR</button>&nbsp;
+                          </div>
+                        </div>
+                      </div>
+
+
+
+
+                      <div class="card-body" style="margin-top: -20px;">
+                        <div class="table-responsive">
+                          <br>
+                          <table class="table table-bordered table-container" >
+                              <thead style="background-color: #007BFF; color: #fff; font-weight: lighter;">
+                                  <tr>
+                                      <th>ID</th>
+                                      <th>Nombres</th>
+                                      <th>Documento</th>
+                                      <th>Tipo</th>
+                                      <th>Reservado</th>
+                                     
+                                      <th>Hora_inicio</th>
+                                      <th>Hora_fin</th>
+                                        <th>Duracion</th>
+                                        <th>Tarifa</th>
+                                        <th>Estado</th>
+                                      <th>Cancha</th>
+
+                                        <th class="text-nowrap text-center">Acciones</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  <tr *ngFor="let data of reservasService.items$ | async">
+
+                                      <td>{{data.codRegistro}}</td>
+                                      <td>{{data.nomCliente}} {{data.primer_apellido}} {{data.segundo_apellido}}</td>
+                                      <td>{{data.numDocumento}}</td>
+                                      <td>{{data.tipo}}</td>
+                                      <td>{{data.fechRegistro | date:'yyyy-MM-dd'}}</td>
+                                      <td>{{data.horainicio}}</td>
+                                      <td>{{data.horafinal}}</td>
+                                      <td>{{data.duracion}} mints</td>
+                                      <td>S/. {{data.costoTarifa}}</td>
+                                       <td style="cursor: pointer;">
+                                        <span class="badge badge-pill badge-success" *ngIf="data.estadoRegistro == 'CONFIRMADO'">{{data.estadoRegistro}}</span>
+                                        <span class="badge badge-pill badge-danger" *ngIf="data.estadoRegistro == 'SIN CONFIRMAR'" (click)="openPayReserva(data)">{{data.estadoRegistro}}</span>
+                                        </td>
+                                        <td>{{data.nomLocalidad}}</td>
+
+                                      <td class="text-nowrap text-center">
+                                          <!-- <button  class="cursor btn btn-warning mr-2" (click)="openEdit(data)" > <i class="fa fa-edit"> </i>  </button>  -->
+                                          <button  *ngIf="data.estadoRegistro == 'SIN CONFIRMAR'" class="cursor btn btn-sm btn-danger mr-2" (click)="openDelete(data)"   > <i class="fas fa-trash-alt"> </i>  </button> 
+                                      </td>
+                                  </tr>
+                                  
+                              </tbody>
+                            </table>
+                          </div>
+                          <app-paginator class="d-flex justify-content-between align-items-center flex-wrap" [paginator]="paginator" [isLoading]="isLoading" (paginate)="paginate($event)"></app-paginator>
+                        </div>
+
+        </div>
+    </div>
+</div>

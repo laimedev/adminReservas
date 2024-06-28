@@ -1,0 +1,159 @@
+<div class="modal-header btn-primary">
+    <h4 class="modal-title text-white">{{ formTitle }}</h4>
+    <button (click)="closeMOdal()" type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
+
+<div class="modal-body">
+    <form (ngSubmit)="onSubmit()" id="formUser" [formGroup]="formGroup">
+
+            <div class="row" >
+
+                <div class="col-6" >
+                    <mat-form-field class="w-100" appearance="outline">
+                        <mat-label>Tipo de documento</mat-label>
+                        <mat-select  formControlName="tipo_documento">
+                            <mat-option>--</mat-option>
+                            <mat-option *ngFor="let wType of tipo_documento" [value]="wType.value">
+                                {{wType.label}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                </div>
+
+                
+                <div class="col-6" >
+                    <mat-form-field class="w-100" appearance="outline">
+                        <mat-label>Numero de documento:</mat-label>
+                        <input type="text" name="nombre" autocomplete="off" matInput formControlName="numDocumento" >
+                    </mat-form-field>
+                </div>
+
+               
+            </div>
+
+
+
+            <div class="row" >
+
+                <div class="col-4" >
+                    <mat-form-field class="w-100" appearance="outline">
+                        <mat-label>Nombres:</mat-label>
+                        <input type="text" name="nombre" autocomplete="off" matInput formControlName="nombres" >
+                    </mat-form-field>
+                </div>
+
+                <div class="col-4" >
+                    <mat-form-field class="w-100" appearance="outline">
+                        <mat-label>Primer apellido:</mat-label>
+                        <input type="text" name="nombre" autocomplete="off" matInput formControlName="primer_apellido" >
+                    </mat-form-field>
+                </div>
+
+                <div class="col-4" >
+                    <mat-form-field class="w-100" appearance="outline">
+                        <mat-label>Segundo apellido:</mat-label>
+                        <input type="text" name="nombre" autocomplete="off" matInput formControlName="segundo_apellido" >
+                    </mat-form-field>
+                </div>
+            </div>
+
+
+            <div class="row" >
+                <div class="col-6" >
+                    <!-- <mat-form-field class="w-100" appearance="outline">
+                        <mat-label>Fecha nacimiento:</mat-label>
+                        <input type="text" name="nombre" autocomplete="off" matInput formControlName="fechNac" >
+                    </mat-form-field> -->
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>Fecha nacimiento</mat-label> 
+                        <input  matInput [matDatepicker]="picker1" name="date_form" 
+                        id="miid" placeholder="Fecha de nacimiento" (click)="picker1.open()" formControlName="fechNac">
+                        <mat-icon matSuffix>date_range</mat-icon>
+                        <mat-datepicker #picker1></mat-datepicker>
+                      </mat-form-field>
+                </div>
+
+                <div class="col-6" >
+                    <mat-form-field class="w-100" appearance="outline">
+                        <mat-label>Genero</mat-label>
+                        <mat-select  formControlName="genero">
+                            <mat-option>--</mat-option>
+                            <mat-option *ngFor="let wType of genero" [value]="wType.value">
+                                {{wType.label}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+
+
+
+            <div class="row" >
+                <div class="col-6" >
+                    <mat-form-field class="w-100" appearance="outline">
+                        <mat-label>Telefono:</mat-label>
+                        <input type="text" name="nombre" autocomplete="off" matInput formControlName="telefono" >
+                    </mat-form-field>
+                </div>
+
+                <div class="col-6" >
+                    <mat-form-field class="w-100" appearance="outline">
+                        <mat-label>Tipo</mat-label>
+                        <mat-select  formControlName="tipo">
+                            <mat-option>--</mat-option>
+                            <mat-option *ngFor="let wType of tipo" [value]="wType.value">
+                                {{wType.label}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+
+
+            <div class="row" >
+                <div class="col-12" >
+                        <mat-form-field class="w-100" appearance="outline">
+                            <mat-label>Correo electronico:</mat-label>
+                            <input type="email" name="nombre" autocomplete="off" matInput formControlName="email" >
+                        </mat-form-field>
+                </div>
+            </div>
+
+
+
+
+            <div class="row" *ngIf="viewPassword">
+                <div class="col">
+                    <mat-form-field class="w-100" appearance="outline">
+                        <mat-label>Contraseña:</mat-label>
+                        <input type="text" name="nombre" autocomplete="off" matInput formControlName="password" >
+                    </mat-form-field>
+                </div>
+
+                <div class="col">
+                    <mat-form-field class="w-100" appearance="outline">
+                        <mat-label>Confirmar contraseña:</mat-label>
+                        <input name="nombre" autocomplete="off" matInput formControlName="passwordConfirmation" >
+                    </mat-form-field>
+                </div>
+                
+            </div>
+
+
+
+    </form>
+</div>
+
+
+<div class="modal-footer">
+    <button type="button" class="btn btn-success" [disabled]="disableControl" (click)="closeMOdal()"> <i class="fas fa-times mr-1"> </i> CANCELAR</button>
+    <button type="submit" [ngClass]="{'btn-dark': (disableControl === false), 'btn-warning': (disableControl === true)}"
+        class="btn btn-primary" [disabled]="disableControl" form="formUser">
+        <i *ngIf="disableControl" class="fas fa-spin fa-cog"></i> <i class="fas fa-save mr-1"> </i>
+        {{ disableControl === true ? 'ENVIANDO' : 'ACEPTAR' }}  </button>
+</div>

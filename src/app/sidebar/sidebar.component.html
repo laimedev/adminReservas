@@ -1,0 +1,68 @@
+<div class="side-menu">
+    <div class="vertical-nav">
+        <div class="side-menu-header bg-primary">
+            <span class="brand mb-0 img-qhatu">
+                <img src="assets/img/reserv_icon.png"
+                    style="height: 35px;">  
+            </span>
+            <!-- <span class="brand mb-0">
+                <p class="navbar-brand" href="#"><span style="height: 20px;"  class="letra-entel">ATP Certificaciones</span></p>
+            </span> -->
+
+        </div>
+        <ul class="sidebar-nav">
+
+            <li *ngFor="let item of menu; let i = index" [class.dropdown]="item.subMenu && item.subMenu.length > 0">
+
+                <a class="" *ngIf="!item.url" [attr.data-toggle]="item.subMenu && item.subMenu.length > 0 ? 'collapse' : null" [href]="'#collapse-id-' + item.id" aria-expanded="false">
+
+                    <i class="{{item.icon}} icon"></i>
+                    <span class="color-menu">{{ item.displayName }}</span>
+                </a>
+
+                <a class="" *ngIf="item.url"  routerLink="{{ item.url }}"
+                    >
+                    <i class="far fa-file-word icon"></i>
+                    <span class="color-menu">{{ item.displayName }}</span>
+                </a>
+                <div *ngIf="item && item.subMenu && item.subMenu.length > 0" class="clearfix collapse" [id]="'collapse-id-' + (item.id || '')">
+                    <ul class="sidebar-nav">
+                        <li *ngFor="let subItem of item.subMenu; let i = index">
+                            <a routerLink="{{ subItem.url }}" ><i class="{{subItem.icon}} icon"></i> <span class="color-menu">{{ subItem.displayName }}</span></a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+<!-- 
+            <li class="dropdown">
+                <a class="" data-toggle="collapse" href="#collapseExample" aria-expanded="false"
+                    aria-controls="collapseExample">
+                    <i class="far fa-file-word icon"></i>
+                    <span>Elementos de red</span>
+                </a>
+                <div class="collapse clearfix" id="collapseExample">
+                    <ul class="sidebar-nav">
+                        <li>
+                            <a routerLink="/admin/roles" href="#"><i class="far fa-file-word icon"></i> <span>span</span></a>
+                        </li>
+                        <li>
+                            <a href="$">
+                                <i class="far fa-file-word icon"></i>
+                                <span>Puertos</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="far fa-file-word icon"></i>
+                                <span>Servicios</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <a href="#"><i class="far fa-file-word icon"></i> <span>Routers</span></a>
+            </li> -->
+        </ul>
+    </div>
+</div>

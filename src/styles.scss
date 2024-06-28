@@ -1,0 +1,276 @@
+/* You can add global styles to this file, and also import other style files */
+
+body {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    // font-size: 14px;
+    //line-height: 1.42857143;
+    color: #333;
+    background-color: #fff;
+}
+
+@import url('https://unpkg.com/leaflet@1.7.1/dist/leaflet.css');
+
+@import 'all.min.css';
+@import 'theme.scss';
+@import 'primary.scss';
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
+
+// @import '~@angular/material/theming';
+// @import '~@angular/material/prebuilt-themes/indigo-pink';
+
+
+
+
+.btn-size {
+  padding: 10.5px
+}
+
+.btn-primary {
+    color: white;
+    background-color: #007bff;
+    border-color: #007bff
+}
+
+.btn-primary:hover {
+    color: white;
+    background-color: #007bff;
+    border-color: #007bff
+}
+
+.btn-success {
+    color: white;
+    background-color: #ff6c04;
+    border-color: #ff6c04
+}
+
+.btn-success:hover {
+    color: white;
+    background-color: #ff3d00;
+    border-color: #ff3d00
+}
+/*
+td.mat-cell {
+    /* row padding 
+    padding: 16px 0;
+    /* row border 
+    border-bottom: 2px solid #ff6c04;
+    border-top: 1px solid #ff6c04;
+   }
+   
+   td.mat-cell:first-child {
+     /* row border 
+     border-left: 1px solid #ff6c04;
+   }
+   
+   td.mat-cell:last-child {
+     /* row border 
+     border-right: 2px solid #ff6c04;
+   }
+   
+   table {
+     /* row spacing / margin 
+     border-spacing: 0 8px !important;
+   } 
+*/
+   .mat-cell {
+    min-height: 48px;
+    text-align: center;
+    border-right: 1px solid rgb(138, 135, 135);
+}
+
+.letra-entel{
+color: #ffff;
+font-weight: bold;
+font-size: 20px;
+font-family:sans-serif;
+}
+
+.letra-cabecera{
+  color: #7c8185;
+  font-weight: bold;
+  font-size: 16px;
+  font-family:sans-serif;
+  }
+
+
+  .color-menu{
+    color: #0854a4; 
+  }
+
+  .color-menu:hover{
+color: #ff6c04;
+  }
+
+  .icon_dash{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 60px;
+    color: #045bfc ;
+  }
+  .title_dash {
+    font-size: 18px;
+    font-weight: bold;
+    color: #045bfc ;
+    margin-bottom: 10px;
+  }
+
+  .icon-power   {
+    color: #fff;
+    font-size: 20px;
+    margin-left: 10px;
+  }
+
+  .center-card {
+    align-items: center;
+     display: flex;
+     justify-content: center;
+     padding-top: 10px;
+     padding-bottom: 10px;
+     cursor: pointer;
+  }
+
+  
+  th.mat-header-cell, td.mat-cell, td.mat-footer-cell { 
+    border-color: transparent!important;
+  }
+  
+  
+
+
+
+  input[type=file]::file-selector-button {
+    border: 2px solid #ff6c04;
+    // padding: .2em .4em;
+    border-radius: .2em;
+    background-color: #ff6c04;
+    color: #fff;
+    transition: 1s;
+    cursor: pointer;
+    margin-top: -5px;
+  }
+  
+  input[type=file]::file-selector-button:hover {
+    background-color: #ff6c00;
+    border: 2px solid #ff6c00;
+  }
+
+
+
+
+
+
+
+
+
+
+  /* You can add global styles to this file, and also import other style files */
+
+/* Importing Bootstrap SCSS file. */
+// @import 'bootstrap/scss/bootstrap';
+
+.btn-warning {
+    color: white;
+    background-color: #BCCD1E;
+    border-color: #BCCD1E
+}
+
+.bg-success {
+    background-color: #006F57;
+}
+
+
+.fc .fc-daygrid-day.fc-day-today {
+    background-color: rgb(229, 248, 225, 0.5) !important;
+  }
+
+
+.swal2-popup .swal2-styled.swal2-confirm {
+	background-color: #007BFF !important;
+}
+.swal2-popup .swal2-styled:focus {
+	background-color: #007BFF !important;
+}
+
+.swal2-popup .swal2-actions:not(.swal2-loading) .swal2-styled:hover {
+	background-color: #007BFF !important;
+}
+
+
+.fc .fc-timegrid-axis-cushion {
+    visibility: hidden;
+}
+
+.fc .fc-timegrid-axis-cushion:before {
+    content:  "Hora";
+    visibility: visible;
+    font-size: 16px;
+}
+
+.fc .fc-col-header-cell-cushion {
+    text-transform: uppercase;
+    color: #007bff;
+    text-align: right;
+}
+
+.fc .fc-toolbar-title {
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+.fc .fc-timegrid-axis-cushion, .fc .fc-timegrid-slot-label-cushion {
+    padding: 5px
+}
+
+.fc-timegrid-event .fc-event-main {
+    text-align: center;
+}
+
+.fc .fc-button-primary:not(:disabled).fc-button-active, .fc .fc-button-primary:not(:disabled):active {
+
+    background-color: #007bff ;
+    border-color: #007bff ;
+    color: #ffff;
+}
+
+
+.fc .fc-button-primary:disabled {
+    background-color: #007bff ;
+    border-color: #007bff ;
+    color: #ffff;
+}
+
+.fc .fc-button-primary {
+    background-color: #007bff ;
+    border-color: #007bff ;
+    color: #ffff;
+}
+
+.kr-payment-button{
+  background-color: #007bff  !important;
+    border-color: #007bff  !important;
+    color: rgb(0, 0, 0) !important;
+  }
+
+
+  .cdk-overlay-pane  { 
+    position:absolute;
+    pointer-events:auto;
+    box-sizing:border-box;
+    z-index:1000;
+    display:flex;
+    max-width:100%;
+    max-height:100%;
+    transform:none !important; 
+    margin-top: 35px;
+    margin-left: -12px;
+  } 
+
+
+
+  td {
+    white-space: nowrap;
+  }

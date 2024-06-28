@@ -1,0 +1,99 @@
+<div class="main-content">
+    <div class="row">
+        <div class="col-8">
+            <div class="card">
+                <div class="card-header" style="background-color: #fff">
+                    <div class="row">
+                        <div class="col-12 ml-4 mt-3">
+                            <span class="letra-cabecera">Mi Pertfil</span>
+                            <br><br>
+                            <span class="text-danger">*Esta información es importante para la emisión de reportes.
+                            </span>
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <div class="card-body mt-3" >
+
+
+                        <div class="row">
+                            <div class="col-6">
+                                <p>Foto</p>
+                            </div>
+                            
+                            <div class="col-6" *ngIf="data">
+                                <img  [src]="urlImg+data.foto" width="80">
+                            </div>
+
+                            <div class="col-6 pt-2">
+                                <p>Nombres:</p>
+                            </div>
+                            
+                            <div class="col-6 pt-2">
+                                {{data.nombres}}
+                            </div>
+
+
+                            <div class="col-6 pt-2">
+                                <p>Numero de documento:</p>
+                            </div>
+                            
+                            <div class="col-6 pt-2">
+                                {{data.numDocumento}}
+                            </div>
+
+
+                            <div class="col-6 pt-2">
+                                <p>Rol:</p>
+                            </div>
+                            
+                            <div class="col-6 pt-2">
+                                {{data.tipo}}
+                            </div>
+
+                            <div class="col-6 pt-2">
+                                <p>Telefono:</p>
+                            </div>
+                            
+                            <div class="col-6 pt-2">
+                                {{data.telefono}}
+                            </div>
+
+                            
+
+                            <div class="col-6 pt-2">
+                                <p>Email:</p>
+                            </div>
+                            
+                            <div class="col-6 pt-2">
+                                {{data.email}}
+                            </div>
+
+
+                            <div class="col-6 pt-2">
+                                <p>Dirección:</p>
+                            </div>
+                            
+                            <div class="col-6 pt-2">
+                                {{data.direccion}}
+                            </div>
+                            
+                        </div>
+
+                        <hr>
+
+                        <div class="row pt-2" style="justify-content: center;">
+                            <button type="button" class="btn btn-primary" (click)="openEdit()"> <i class="fas fa-edit"> </i> EDITAR</button>
+                        </div>
+                            
+
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,11 @@
+.table-container {
+    width: 100%; /* Ancho deseado del contenedor */
+    overflow-x: auto; /* Habilitar desplazamiento horizontal */
+    cursor: grab; /* Cambia el cursor para indicar que se puede arrastrar */
+  }
+  
+
+  .desplazar-tabla {
+    transform: translateX(100px); /* Cambia el valor según tu necesidad */
+    transition: transform 0.3s ease; /* Agrega una transición suave */
+  }

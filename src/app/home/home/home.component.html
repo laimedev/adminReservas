@@ -1,0 +1,210 @@
+<div class="main-content">
+
+
+    <div *ngIf="isLoading" class="loading-overlay">
+        <!-- <div class="spinner"></div> -->
+        <div class="row">
+          <div class="col-12">
+            <div class="loading-content">
+              <div class="spinner"></div>
+              <!-- <p style="font-weight: bold; color: #fff; padding-top: 10px;">Cargando</p> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+    <div class="row">
+        <!-- <div class="form-group col-6 pt-3">
+              <mat-form-field class="w-100" appearance="outline">
+                <mat-label>Seleccione localidad</mat-label>
+                <mat-select  [(value)]="selectedSucursal" (selectionChange)="updateSucursales($event)">
+                    <mat-option *ngFor="let data of sucursal" [value]="data.codSucursal" >{{data.nomSucursal}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div> -->
+    
+        <div class="form-group col-6 pt-3 ">
+            <mat-form-field class="w-100" appearance="outline">
+                <mat-label>Seleccione cancha</mat-label>
+                <mat-select  [(value)]="localidadSelect" (selectionChange)="updateLocalidad($event)">
+                    <mat-option *ngFor="let data of localidad" [value]="data.codLocalidad" >{{data.nomLocalidad}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+
+        <div class="col-6">
+            <mat-form-field  class="w-100 pt-3" appearance="outline">
+                <mat-label>Seleccione un cliente</mat-label>
+                <mat-select placeholder="Seleccione un cliente" (selectionChange)="onSelectionChange($event)">
+                  <mat-select-filter [placeholder]="'Buscar cliente por nombres y dni'" [displayMember]="'nombreCompletoConDNI'" [array]="variables" (filteredReturn)="filteredList5 = $event"></mat-select-filter>
+                  <mat-option *ngFor="let item of filteredList5" [value]="item">
+                    {{item.nombreCompletoConDNI}}
+                  </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <p style="color: red; text-align: end;" *ngIf="idClientePublic === 0"><b>IMPORTANTE:</b> Seleccione un cliente.</p>
+        </div>
+    </div>
+
+
+
+
+    <div class="row pt-5">
+        <div class="col-12">
+            <full-calendar   #fullcalendar [options]='calendarOptions' [events]="calendarOptions.events">
+                <ng-template *ngIf='calendarVisible' #eventContent let-arg>
+                </ng-template>
+              </full-calendar>
+        </div>
+    </div>
+
+
+
+
+
+
+    <ng-template #reservationModal let-modal>
+        <div class="modal-dialog-centered modal-lg">
+        <!-- <div class="modal-dialog modal-dialog-centered modal-lg"> -->
+          <div class="modal-content">
+
+            <div class="modal-header bg-primary">
+              <div class="card-centered">
+                <div class="card card-image" >
+                  <img src="assets/img/reserv_icon.png" alt="Logo" width="37">
+                </div>
+              </div>
+              <h5  class="pt-2" style="font-size: 20px;  color: #fff; margin-left: -70px;">Detalle de reserva</h5>
+              <button type="button" class="btn btn-danger" (click)="modal.dismiss()">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+
+            <div class="modal-body">
+              <!-- <div class="row" style="margin-bottom: -5px;">
+                <div class="col-9" style="font-weight: bold; color: #7E7F7F;">
+                  <p *ngIf="selectedApi === 'urlAPI1'">COMPLEJO LAS MALVINAS</p>
+                  <p *ngIf="selectedApi === 'urlAPI2'">ESTADIO JULIO MONTJOY</p>
+                  <p *ngIf="selectedApi === 'urlAPI3'">POLIDEPORTIVO PRECURSORES</p>
+                </div>
+                
+                <div class="col-3 text-end" style="font-weight: bold; color: #7E7F7F;" *ngIf="isVoley">
+                  <p *ngIf="tipoFutbol === 7">Fútbol: 7 </p>
+                  <p *ngIf="tipoFutbol === 9">Fútbol: 9 </p>
+                  <p *ngIf="tipoFutbol === 11">Fútbol: 11 </p>
+                </div>
+              </div> -->
+
+          
+
+              <form (submit)="submitReservationForm3()">
+
+                <div class="row">
+                  <!-- <div class="col-6">
+                    <label for="startDateTime">Fecha - Hr Inicio:</label>
+                    <input type="datetime-local" id="startDateTime" class="form-control" [(ngModel)]="reservationForm.startDateTime" name="startDateTime" readonly>
+                  </div> -->
+                  <!-- la fecha me muestra asi 2024-04-15T21:00 desearia que me muestre 12/04/2024 09:00 PM -->
+                  
+                  
+
+                
+
+
+                  <div class="col-12" >
+                    <mat-form-field class="w-100" appearance="outline">
+                        <mat-label>Cliente:</mat-label>
+                        <mat-icon matSuffix>person_pin</mat-icon>
+                        <input type="text"  name="nameClient" autocomplete="off" matInput  [(ngModel)]="nameClientSelect"  readonly >
+                    </mat-form-field>
+                  </div>
+
+
+                  
+                  <div class="col-6" >
+                    <mat-form-field class="w-100" appearance="outline">
+                        <mat-label>Fecha - Hr Inicio:</mat-label>
+                        <mat-icon matSuffix>calendar_today</mat-icon>
+                        <input type="datetime" id="startDateTime" autocomplete="off" matInput  [ngModel]="reservationForm.startDateTime | formatdate" name="startDateTime" readonly >
+                    </mat-form-field>
+                  </div>
+
+
+                  <div class="col-6" >
+                    <mat-form-field class="w-100" appearance="outline">
+                        <mat-label>Fecha - Hr Fin:</mat-label>
+                        <mat-icon matSuffix>calendar_today</mat-icon>
+                        <input type="datetime" id="endDateTime" autocomplete="off" matInput  [ngModel]="reservationForm.endDateTime | formatdate" name="endDateTime" readonly >
+                    </mat-form-field>
+                  </div>
+
+
+                  <!-- <div  class="col-6">
+                    <label for="endDateTime">Fecha - Hr Fin:</label>
+                    <input type="datetime-local" id="endDateTime" class="form-control" [(ngModel)]="reservationForm.endDateTime" name="endDateTime" readonly>
+                  </div> -->
+
+
+                  <!-- <div class="col-6" >
+                    <mat-form-field class="w-100" appearance="outline">
+                        <mat-label>Fecha - Hr Fin:</mat-label>
+                        <input type="datetime-local" id="endDateTime"  [(ngModel)]="reservationForm.endDateTime" name="endDateTime" readonly>
+                    </mat-form-field>
+                  </div> -->
+
+                  <div class="col-6" >
+                    <mat-form-field class="w-100" appearance="outline">
+                        <mat-label>Precio:</mat-label>
+                        <mat-icon matSuffix>attach_money</mat-icon>
+                        <input type="text" id="price" autocomplete="off" matInput  [(ngModel)]="reservationForm.price" name="price" readonly >
+                    </mat-form-field>
+                  </div>
+
+
+                  <div class="col-6" >
+                    <mat-form-field class="w-100" appearance="outline">
+                        <mat-label>Tiempo de juego:</mat-label>
+                        <mat-icon matSuffix>access_time</mat-icon>
+                        <input type="text" id="timeGame" autocomplete="off" matInput  [(ngModel)]="reservationForm.timeGame" name="timeGame" readonly >
+                    </mat-form-field>
+                  </div>
+
+                </div>
+
+                    <!-- <div class="form-group mt-1">
+                      <label for="price">Precio:</label>
+                    </div>
+                    <div class="input-group mb-2">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">S/ </span>
+                      </div>
+                      <input type="text" id="price" class="form-control" [(ngModel)]="reservationForm.price" name="price"readonly>
+                    </div> -->
+
+
+                    
+
+
+                <!-- <div class="form-group">
+                  <label for="price">Tiempo de juego:</label>
+                  <input type="text" id="timeGame" class="form-control" [(ngModel)]="reservationForm.timeGame" name="timeGame"readonly>
+                </div> -->
+
+                <div class="text-center mt-2">
+                  <button type="submit" class="btn btn-success">
+                    <i class="fas fa-check mr-2"> </i>
+                     Reserva cancha</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+
+</div>

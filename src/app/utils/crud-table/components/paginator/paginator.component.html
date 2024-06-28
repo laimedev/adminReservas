@@ -1,0 +1,47 @@
+<!-- start: Paginator -->
+
+<div class="d-flex align-items-center py-3">
+
+
+ 
+  <span class="react-bootstrap-table-pagin ation-total"
+    >&nbsp; Total  {{ paginator.total }} registros. {{ paginator.page }} de {{ paginator.pageSize }}</span
+  >
+
+
+    <!-- begin: loading -->
+    <div class="d-flex align-items-center" *ngIf="isLoading">
+      <div class="">Cargando</div>
+      <div class="spinner spinner-primary mr-10"></div>
+    </div>
+    <!-- end: loading -->
+
+
+  <!-- end: pageSize -->
+
+   <!-- begin: pageSize -->
+   <!-- <select
+   class="form-control form-control-sm font-weight-bold ml-4   false"
+   style="width: 75px"
+   [(ngModel)]="paginator.pageSize"
+   (change)="sizeChange()"
+ >
+   <option class="btn" *ngFor="let ps of pageSizes">
+     {{ ps }}
+   </option></select> -->
+
+
+</div>
+<!-- end: Paginator -->
+
+<div class="d-flex flex-wrap py-2 mr-3">
+  <ng-pagination
+    [collectionSize]="paginator.total"
+    [(page)]="paginator.page"
+    [maxSize]="4"
+    [rotate]="true"
+    [boundaryLinks]="true"
+    [pageSize]="paginator.pageSize"
+    (pageChange)="pageChange($event)"
+  ></ng-pagination>
+</div>

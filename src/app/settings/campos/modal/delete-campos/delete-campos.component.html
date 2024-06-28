@@ -1,0 +1,32 @@
+<div class="modal-header btn-primary">
+    <h4 class="modal-title text-white">ELIMINAR CAMPO:</h4>
+    <button (click)="closeModal()" type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+</div>
+<div class="modal-body">
+    <div class="container-fluid">
+        <div class="row">
+            <div *ngIf="deleted=== false; else elseBlock" class="col-12">
+                Eliminar:  <strong>{{ empleado.nomLocalidad }} </strong>
+                <div *ngIf="deleting">
+                    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+                </div>
+            </div>
+            <ng-template #elseBlock>
+                <div class="col-12">
+                    Se eliminó correctamente
+                </div>
+            </ng-template>
+        </div>
+        
+    </div>
+</div>
+<div class="modal-footer">
+    <button [disabled]="deleting" class="btn btn-success" (click)="closeModal()">CANCELAR</button>
+    <button [disabled]="deleting" *ngIf="deleted === false" class="btn btn-primary"
+    [ngClass]="{'btn-dark': (deleting === false), 'btn-warning': (deleting === true)}"
+    (click)="delete()">
+    <i *ngIf="deleting" class="fas fa-spin fa-cog"></i>
+    ACEPTAR</button>
+  </div>

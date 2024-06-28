@@ -1,0 +1,69 @@
+<div class="main-content">
+    <div class="row">
+        <div class="col-8">
+            <div class="card">
+                <div class="card-header" style="background-color: #fff">
+                    <div class="row">
+                        <div class="col-12 ml-4 mt-3">
+                            <span class="letra-cabecera">Ajustes</span>
+                            <br><br>
+                            <span class="text-danger">*Esta información es importante para la emisión de reportes y para el funcionamiento del Sistema.</span>
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <div class="card-body mt-3" >
+
+
+                        <div class="row">
+                            <div class="col-6">
+                                <p>Logo</p>
+                            </div>
+                            
+                            <div class="col-6" *ngIf="data">
+                                <img  [src]="urlImg+data.logo" width="80">
+                            </div>
+
+                            <div class="col-6 pt-2">
+                                <p>Nombre de la empresa:</p>
+                            </div>
+                            
+                            <div class="col-6 pt-2">
+                                {{data.nombre}}
+                            </div>
+
+
+                            <div class="col-6 pt-2">
+                                <p>Dirección:</p>
+                            </div>
+                            
+                            <div class="col-6 pt-2">
+                                {{data.direccion}}
+                            </div>
+
+                            <div class="col-6 pt-2">
+                                <p>Telefono:</p>
+                            </div>
+                            
+                            <div class="col-6 pt-2">
+                                {{data.telefono}}
+                            </div>
+                        </div>
+
+                        <hr>
+
+                        <div class="row pt-2" style="justify-content: center;">
+                            <button type="button" class="btn btn-primary" (click)="openEdit()"> <i class="fas fa-edit"> </i> EDITAR</button>
+                        </div>
+                            
+
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

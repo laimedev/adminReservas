@@ -1,0 +1,92 @@
+<div class="modal-header btn-primary">
+    <h4 class="modal-title text-white">PAGAR RESERVA:</h4>
+    <button (click)="closeModal()" type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+</div>
+<div class="modal-body">
+    <div class="container-fluid">
+        <div class="row">
+
+
+            
+
+
+            <div class="col-4" >
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>Nombres:</mat-label>
+                    <input type="text" name="nombre" autocomplete="off" matInput  [(ngModel)]="empleado.nomCliente" readonly>
+                </mat-form-field>
+            </div>
+
+            <div class="col-4" >
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>1º Apellido:</mat-label>
+                    <input type="text" name="nombre" autocomplete="off" matInput  [(ngModel)]="empleado.primer_apellido" readonly>
+                </mat-form-field>
+            </div>
+
+            <div class="col-4" >
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>2º Apellido:</mat-label>
+                    <input type="text" name="nombre" autocomplete="off" matInput  [(ngModel)]="empleado.segundo_apellido" readonly>
+                </mat-form-field>
+            </div>
+
+
+
+            <div class="col-6" >
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>Hora Inicio:</mat-label>
+                    <input type="text" name="nombre" autocomplete="off" matInput  [(ngModel)]="empleado.horainicio" readonly>
+                </mat-form-field>
+            </div>
+
+            <div class="col-6" >
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>Hopra Fin:</mat-label>
+                    <input type="text" name="nombre" autocomplete="off" matInput  [(ngModel)]="empleado.horafinal" readonly>
+                </mat-form-field>
+            </div>
+
+
+            <div class="col-6" >
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>Nombre campo:</mat-label>
+                    <input type="text" name="nombre" autocomplete="off" matInput  [(ngModel)]="empleado.nomLocalidad" readonly>
+                </mat-form-field>
+            </div>
+
+            <div class="col-6" >
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>Tarifa:</mat-label>
+                    <input type="text" name="nombre" autocomplete="off" matInput  [(ngModel)]="empleado.costoTarifa" readonly>
+                </mat-form-field>
+            </div>
+
+
+
+
+            <div class="col-12" >
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>Método de pago</mat-label>
+                    <mat-select  (selectionChange)="onSelectionChange($event)">
+                        <mat-option>--</mat-option>
+                        <mat-option *ngFor="let wType of method" [value]="wType.value">
+                            {{wType.label}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+        
+    </div>
+</div>
+<div class="modal-footer">
+    <button [disabled]="deleting" class="btn btn-success" (click)="closeModal()">CANCELAR</button>
+    <button [disabled]="deleting" *ngIf="deleted === false" class="btn btn-primary"
+    [ngClass]="{'btn-dark': (deleting === false), 'btn-warning': (deleting === true)}"
+    (click)="delete()">
+    <i *ngIf="deleting" class="fas fa-spin fa-cog"></i>
+    ACEPTAR</button>
+  </div>
