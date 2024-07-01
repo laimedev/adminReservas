@@ -10,6 +10,7 @@ import { DeleteReservaComponent } from '../modal/delete-reserva/delete-reserva.c
 import { PayRservaComponent } from '../modal/pay-rserva/pay-rserva.component';
 import { SnackbarHelper } from 'src/app/utils/helpers/snackbar-helper';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { CamposService } from 'src/app/settings/campos/services/campos.service';
 
 @Component({
   selector: 'app-reservas-list',
@@ -32,9 +33,10 @@ export class ReservasListComponent implements OnInit {
   public variables: any[] = [];
   public filteredList5: any[] = [];
 
-  
+  public localidades: any = [];
 
   constructor(public reservasService: ReservasService,
+    public campoService: CamposService,
     private modalService: NgbModal,
     private router: Router,
     private snackBar: MatSnackBar,
@@ -43,6 +45,7 @@ export class ReservasListComponent implements OnInit {
 
   ngOnInit(): void {
     this.obetenerCLientes();
+    this.listCmapos();
     this.filterForm();
     this.searchForm();
 
@@ -51,6 +54,14 @@ export class ReservasListComponent implements OnInit {
     this.sorting = this.reservasService.sorting;
     this.reservasService.fetch();
 
+  }
+
+
+  listCmapos(){
+    this.campoService.getLocalidadesAll().subscribe( resp => {
+      console.log(resp);
+      this.localidades = resp.data;
+    })
   }
 
   resetTable(){
@@ -177,14 +188,27 @@ export class ReservasListComponent implements OnInit {
 
 
 
-  exportFile(){
-    // const params = {
-    //   status: this.filterGroup.get('status').value,
-    //   startDate: this.formatDate(this.filterGroup.get('startDate').value),
-    //   endDate: this.formatDate(this.filterGroup.get('endDate').value),
-    //   searchTerm: this.searchGroup.get('searchTerm').value,
-    // };
-    this.reservasService.exportFile().subscribe(
+ exportFile() {
+  const startDate = this.filterGroup.get('startDate').value;
+  const endDate = this.filterGroup.get('endDate').value;
+
+  if (!startDate || !endDate) {
+    SnackbarHelper.show(this.snackBar, { 
+      msg: 'Fecha inicio y Fecha final no están definidos', 
+      panelClass: ['custom-snackbar']
+    });
+  } else {
+    const params = {
+      status: this.filterGroup.get('status').value,
+      venta_id: this.filterGroup.get('venta_id').value,
+      startDate: this.formatDate(startDate),
+      endDate: this.formatDate(endDate),
+      searchTerm: this.searchGroup.get('searchTerm').value,
+    };
+
+    // console.log(params);
+
+    this.reservasService.exportFile(params).subscribe(
       (response: Blob) => {
         const url = window.URL.createObjectURL(response);
         const a = document.createElement('a');
@@ -197,7 +221,11 @@ export class ReservasListComponent implements OnInit {
         console.error('Error al exportar reservas a Excel:', error);
       }
     );
+
+    
   }
+}
+
 
 
  
@@ -209,6 +237,23 @@ export class ReservasListComponent implements OnInit {
         console.error('Failed to copy: ', err);
       });
     }
+  }
+
+
+  pasteCODRegistro() {
+    navigator.clipboard.readText().then((textFromClipboard) => {
+      // Aquí puedes usar el texto obtenido desde el portapapeles (textFromClipboard)
+      console.log('Texto pegado desde el portapapeles:', textFromClipboard);
+      this.filterGroup.get('venta_id')?.setValue(textFromClipboard)
+      SnackbarHelper.show(this.snackBar, { msg: 'Pegar de portapapeles: ' + textFromClipboard,  })
+
+      // Ejemplo: asignar el texto a una propiedad o mostrarlo en un Snackbar
+      // this.data.codRegistro = textFromClipboard;
+      SnackbarHelper.show(this.snackBar, { msg: 'Texto pegado desde el portapapeles: ' + textFromClipboard });
+    }).catch(err => {
+      console.error('Failed to paste: ', err);
+      SnackbarHelper.show(this.snackBar, { msg: 'Error al pegar desde el portapapeles', duration: 3000 });
+    });
   }
 
 

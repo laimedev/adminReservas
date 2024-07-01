@@ -42,8 +42,8 @@
 
 
                                 <mat-form-field appearance="outline">
-                                  <mat-icon matPrefix style="margin-left: 10px;">search</mat-icon>
-                                  <input matInput placeholder="ID Venta" formControlName="venta_id"/>
+                                  <mat-icon matSuffix style="margin-left: 10px; cursor: pointer;" (click)="pasteCODRegistro()">content_paste</mat-icon>
+                                  <input matInput placeholder="ID Venta ó N° reserva" formControlName="venta_id"/>
                                 </mat-form-field>
 
                   
@@ -78,7 +78,7 @@
                               
 
 
-                              <mat-form-field  class="w-100" appearance="outline">
+                              <!-- <mat-form-field  class="w-100" appearance="outline">
                                 <mat-label>Seleccione un cliente</mat-label>
                                 <mat-select placeholder="Seleccione un cliente" (selectionChange)="onSelectionChange($event)" formControlName="searchTerm">
                                   <mat-select-filter [placeholder]="'Buscar cliente por nombres y dni'" [displayMember]="'nombreCompletoConDNI'" [array]="variables" (filteredReturn)="filteredList5 = $event"></mat-select-filter>
@@ -86,7 +86,17 @@
                                     {{item.nombreCompletoConDNI}}
                                   </mat-option>
                                 </mat-select>
+                            </mat-form-field> -->
+
+
+                            <mat-form-field appearance="outline" class="w-100">
+                              <mat-label>Campos deportivos</mat-label>
+                              <mat-select name="message" formControlName="searchTerm" >
+                                <mat-option value="">--</mat-option>
+                                <mat-option *ngFor="let data of localidades" [value]="data.codLocalidad">{{data.nomLocalidad}}</mat-option>
+                              </mat-select>
                             </mat-form-field>
+
 
                             </div>
                           </div>

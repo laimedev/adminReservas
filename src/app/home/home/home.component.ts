@@ -260,10 +260,50 @@ handleEventClick(clickInfo: EventClickArg) {
 
 
   console.log('Evento clicado:', clickInfo);
+  console.log('Evento clicado:', clickInfo.event._def.extendedProps);
   // const eventId = clickInfo.event.id;
   // const eventTitle = clickInfo.event.title;
   // const eventStart = clickInfo.event.start;
   // const eventEnd = clickInfo.event.end;
+
+
+
+  const dataSearch = {
+    codRegistro: clickInfo.event._def.extendedProps['codRegistro'],
+  }
+
+
+  this.reserveServices.searchReservaByID(dataSearch).subscribe(
+    (resp: any) => {
+      console.log(resp);
+      if (resp['ok'] === true) {
+        console.log('okkkkkkkkkkk');
+
+
+        const modalRef = this.modalService.open(ReservaEditComponent, { size: 'lg', backdrop: 'static', centered: true });
+        modalRef.componentInstance.data = resp.registro
+        modalRef.result.then(res => {
+          // this.empleadoService.fetch();
+        })
+
+
+      } else {
+
+
+        this.validateDateReserve(
+          this.formatTime(this.reservationForm.startDateTime),
+          this.formatDate(this.reservationForm.startDateTime),
+          this.formatTime(this.reservationForm.endDateTime)
+        );
+      }
+    },
+    (error) => {
+      console.error('Error en la solicitud:', error);
+      // Puedes agregar un console.log('queweeeeeeeeee') aquí para verificar si se ejecuta en caso de error
+    }
+  );
+
+
 
   // console.log('Evento clicado:', eventId, eventTitle, eventStart, eventEnd);
   

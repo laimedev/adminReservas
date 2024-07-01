@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -39,12 +39,26 @@ export class ReservasService extends CrudService<any>{
         return this.http.delete<any>(environment.baseUrl + 'reporte/delete/' + data.venta_id)
       }
 
-      exportFile() {
-        return this.http.post(`${environment.baseUrl}reporte/export-excel`, {}, {
+      // exportFile(params: any): Observable<Blob> {
+      //   return this.http.post(`${environment.baseUrl}reporte/export-excel`, params, {
+      //     responseType: 'blob'
+      //   });
+      // }
+
+
+      exportFile(params: any): Observable<Blob> {
+        let queryParams = new HttpParams();
+        for (let key in params) {
+          if (params[key] !== null && params[key] !== undefined) {
+            queryParams = queryParams.append(key, params[key]);
+          }
+        }
+        return this.http.get(`${environment.baseUrl}reporte/export-excel`, {
+          params: queryParams,
           responseType: 'blob'
         });
       }
-
+      
 
       createPayment(dataForm: any){
         return this.http.post<any>(`${environment.baseUrl}registro-cliente/registrar-pago`, dataForm)

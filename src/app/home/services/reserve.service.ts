@@ -53,6 +53,10 @@ export class ReserveService {
     return this.http.post(`${this.apiUrl}reporte/search-reserva`, formData)
   }
 
+  searchReservaByID(formData: any){
+    return this.http.post(`${this.apiUrl}reporte/search-reserva-id`, formData)
+  }
+
   
 
 }

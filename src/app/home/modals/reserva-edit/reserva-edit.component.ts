@@ -54,12 +54,25 @@ export class ReservaEditComponent implements OnInit {
 
 
   copyIDVenta(){
-    navigator.clipboard.writeText(this.data.venta_id).then(() => {
-      SnackbarHelper.show(this.snackBar, { msg: 'ID de venta copiada', })
-    }).catch(err => {
-      console.error('Failed to copy: ', err);
-    });
+    if(this.data.venta_id) {
+      navigator.clipboard.writeText(this.data.venta_id).then(() => {
+        SnackbarHelper.show(this.snackBar, { msg: 'COPIADO: ID de venta: ' + this.data.venta_id,  })
+      }).catch(err => {
+        console.error('Failed to copy: ', err);
+      });
+    }
   }
+
+  copyCODRegistro(){
+    if(this.data.codRegistro) {
+      navigator.clipboard.writeText(this.data.codRegistro).then(() => {
+        SnackbarHelper.show(this.snackBar, { msg: 'COPIADO: Código de registro: ' + this.data.codRegistro,  })
+      }).catch(err => {
+        console.error('Failed to copy: ', err);
+      });
+    }
+  }
+
 
 
 }

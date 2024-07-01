@@ -11,13 +11,24 @@
     <div class="row">
 
 
-    <div class="col-12" >
+    <div class="col-8" >
         <mat-form-field class="w-100" appearance="outline">
             <mat-label>Cliente:</mat-label>
             <mat-icon matSuffix>person_pin</mat-icon>
             <input type="text"  name="nameClient" autocomplete="off" matInput  [(ngModel)]="data.nombreCompleto"  readonly >
         </mat-form-field>
       </div>
+
+
+      <div class="col-4" >
+        <mat-form-field class="w-100" appearance="outline">
+            <mat-label>Codigo registro:</mat-label>
+            <mat-icon  (click)="copyCODRegistro()" matSuffix >content_copy</mat-icon>
+            <input  style="cursor: pointer;" (click)="copyCODRegistro()"  type="text" autocomplete="off" matInput  [(ngModel)]="data.codRegistro" name="timeGame" readonly >
+        </mat-form-field>
+      </div>
+
+
 
 
         <div class="col-6" >
@@ -74,7 +85,7 @@
           <div class="col-6" >
             <mat-form-field class="w-100" appearance="outline">
                 <mat-label>Venta ID:</mat-label>
-                <mat-icon  matSuffix >content_copy</mat-icon>
+                <mat-icon  (click)="copyIDVenta()" matSuffix >content_copy</mat-icon>
                 <input  style="cursor: pointer;" (click)="copyIDVenta()"  type="text" id="timeGame" autocomplete="off" matInput  [(ngModel)]="data.venta_id" name="timeGame" readonly >
             </mat-form-field>
           </div>

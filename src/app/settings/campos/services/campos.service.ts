@@ -82,6 +82,12 @@ export class CamposService extends CrudService<any>{
       getSucursal(): Observable<any> {
         return this.http.get(`${environment.baseUrl}sucursal/list`)
       }
+
+
+
+      getLocalidadesAll(): Observable<any> {
+        return this.http.get(`${environment.baseUrl}localidades/list`)
+      }
     
 
 
