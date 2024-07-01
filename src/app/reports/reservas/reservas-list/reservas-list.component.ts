@@ -8,6 +8,8 @@ import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { DeleteReservaComponent } from '../modal/delete-reserva/delete-reserva.component';
 import { PayRservaComponent } from '../modal/pay-rserva/pay-rserva.component';
+import { SnackbarHelper } from 'src/app/utils/helpers/snackbar-helper';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-reservas-list',
@@ -35,6 +37,7 @@ export class ReservasListComponent implements OnInit {
   constructor(public reservasService: ReservasService,
     private modalService: NgbModal,
     private router: Router,
+    private snackBar: MatSnackBar,
     private fb: FormBuilder) 
     { }
 
@@ -60,6 +63,7 @@ export class ReservasListComponent implements OnInit {
       endDate: [''],
       searchTerm: [''],
       status: [''],
+      venta_id: [''],
       sucursal: [''],
       ordering: ['desc']
     });
@@ -70,12 +74,20 @@ export class ReservasListComponent implements OnInit {
     this.reservasService.patchState(
       {
         status: this.filterGroup.get('status').value,
+        venta_id: this.filterGroup.get('venta_id').value,
         sucursal: this.filterGroup.get('sucursal').value,
         startDate: this.formatDate(this.filterGroup.get('startDate').value),
         endDate: this.formatDate(this.filterGroup.get('endDate').value),
         // searchTerm: this.searchGroup.get('searchTerm').value,
         
       });
+
+      const data = {
+        "page": 1,
+        "pageSize": 10,
+        "pageSizes": []
+    }
+      this.paginate(data);
   }
 
 
@@ -90,8 +102,10 @@ export class ReservasListComponent implements OnInit {
     }
   }
 
-  paginate(paginator: PaginatorState) {
+  paginate(paginator: any) {
+  // paginate(paginator: PaginatorState) {
     this.reservasService.patchState({ paginator });
+    console.log(paginator)
   }
 
   onSelectChange(event: MatSelectChange): void {
@@ -187,5 +201,16 @@ export class ReservasListComponent implements OnInit {
 
 
  
+  copyIDVenta(data: any){
+    if(data.venta_id){
+      navigator.clipboard.writeText(data.venta_id).then(() => {
+        SnackbarHelper.show(this.snackBar, { msg: 'COPIADO: ID de venta: ' + data.venta_id,  })
+      }).catch(err => {
+        console.error('Failed to copy: ', err);
+      });
+    }
+  }
+
+
 
 }

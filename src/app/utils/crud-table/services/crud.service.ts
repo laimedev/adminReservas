@@ -18,6 +18,7 @@ const DEFAULT_STATE: ITableState = {
   startDate: '',
   endDate: '',
   status: '',
+  venta_id: '',
   sucursal: '',
 
   searchTerm: '',
@@ -109,6 +110,7 @@ export abstract class CrudService<T> {
     params = params.append('startDate', tableState.startDate);
     params = params.append('endDate', tableState.endDate);
     params = params.append('status', tableState.status);
+    params = params.append('venta_id', tableState.venta_id);
     params = params.append('sucursal', tableState.sucursal);
     params = params.append('searchTerm', tableState.searchTerm);
 

@@ -16,6 +16,8 @@ export class DeleteReservaComponent implements OnInit {
   deleted = false
   deleting = false
 
+  matchKey = true
+
   constructor(protected activeModal: NgbActiveModal,
     protected empleadoService: ReservasService,
     private snackBar: MatSnackBar) { }
@@ -38,4 +40,14 @@ export class DeleteReservaComponent implements OnInit {
       this.closeModal()
     })  
   }
+
+  detectar(event: any){
+    if(event.value == this.empleado.codRegistro) {
+      this.matchKey = false;
+    } else {
+      this.matchKey = true;
+    }
+  }
+
+
 }

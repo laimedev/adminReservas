@@ -10,6 +10,7 @@ export interface ITableState {
   startDate: string;
   endDate: string;
   status: string;
+  venta_id: string;
   sucursal: string;
 
   searchTerm: string;

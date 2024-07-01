@@ -1,5 +1,5 @@
 <div class="modal-header btn-primary">
-    <h4 class="modal-title text-white">EDITAR RESERVA:</h4>
+    <h4 class="modal-title text-white">DETALLE RESERVA:</h4>
     <button (click)="closeModal()" type="button" class="close" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
@@ -89,10 +89,10 @@
 
 
 <div class="modal-footer">
-    <button [disabled]="deleting" class="btn btn-success" (click)="closeModal()">CANCELAR</button>
-    <button [disabled]="deleting" *ngIf="deleted === false" class="btn btn-primary"
+    <button [disabled]="deleting" class="btn btn-success" (click)="closeModal()">CERRAR</button>
+    <!-- <button [disabled]="deleting" *ngIf="deleted === false" class="btn btn-primary"
     [ngClass]="{'btn-dark': (deleting === false), 'btn-warning': (deleting === true)}"
     (click)="delete()">
     <i *ngIf="deleting" class="fas fa-spin fa-cog"></i>
-    ACEPTAR</button>
+    ACEPTAR</button> -->
   </div>

@@ -154,7 +154,7 @@ export class PagosListComponent implements OnInit {
     
    
 
-    var titulo = 'RESERVAS DEPORTIVAS EL CHATO';
+    var titulo = 'EMMUSSA SAC - SURCO TENIS';
     var espacio = '   ';
 
     // var filename = "dddf";
@@ -163,7 +163,7 @@ export class PagosListComponent implements OnInit {
     pdf.pageSize('A7');
     pdf.pageMargins([ 8, 8, 10, 10 ]);
     pdf.info({
-      title: 'Qhatu APP - Reporte',
+      title: 'Pago - Ticket n_' + data.idPago ,
       author: 'AmazonasTradingSAC',
       subject: 'subject of document',
     });
@@ -180,7 +180,7 @@ export class PagosListComponent implements OnInit {
     pdf.add( new Txt('RUC. 123456789 ').alignment('center').italics().end);
     pdf.add( new Txt('Direccion de la empresa - Perú').alignment('center').italics().end);
     pdf.add( new Txt('---------------------------------------------------------------------------------------------------').alignment('center').italics().end);
-    pdf.add( new Txt('Nº de PAGO ' + data.idPago).alignment('center').italics().end);
+    pdf.add( new Txt('Nº de reserva ' + data.idPago).alignment('center').italics().end);
     pdf.add( new Txt('---------------------------------------------------------------------------------------------------').alignment('center').italics().end);
     pdf.add( new Txt('FECHA: ' + data.fechRegistro.substr(0,10)).alignment('left').italics().end);
     pdf.add( new Txt('CLIENTE: ' + data.nombreCliente).alignment('left').italics().end);

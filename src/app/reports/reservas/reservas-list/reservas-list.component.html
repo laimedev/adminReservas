@@ -41,7 +41,10 @@
                                 </mat-form-field>
 
 
-                                
+                                <mat-form-field appearance="outline">
+                                  <mat-icon matPrefix style="margin-left: 10px;">search</mat-icon>
+                                  <input matInput placeholder="ID Venta" formControlName="venta_id"/>
+                                </mat-form-field>
 
                   
                                 <div class="col-lg-1">
@@ -71,10 +74,10 @@
                           
                           <div class="mt-1" [formGroup]="filterGroup">
                             <div [formGroup]="searchGroup">
-                              <!-- <mat-form-field appearance="outline">
-                                <mat-icon matPrefix style="margin-left: 10px;">search</mat-icon>
-                                <input matInput placeholder="Buscar" formControlName="searchTerm"/>
-                              </mat-form-field> -->
+
+                              
+
+
                               <mat-form-field  class="w-100" appearance="outline">
                                 <mat-label>Seleccione un cliente</mat-label>
                                 <mat-select placeholder="Seleccione un cliente" (selectionChange)="onSelectionChange($event)" formControlName="searchTerm">
@@ -106,7 +109,7 @@
                         <div class="table-responsive">
                           <br>
                           <table class="table table-bordered table-container" >
-                              <thead style="background-color: #007BFF; color: #fff; font-weight: lighter;">
+                              <thead class="btn-primary" style="color: #fff; font-weight: lighter;">
                                   <tr>
                                       <th>ID</th>
                                       <th>Nombres</th>
@@ -120,6 +123,7 @@
                                         <th>Tarifa</th>
                                         <th>Estado</th>
                                       <th>Cancha</th>
+                                      <th>ID Venta</th>
 
                                         <th class="text-nowrap text-center">Acciones</th>
                                   </tr>
@@ -141,6 +145,8 @@
                                         <span class="badge badge-pill badge-danger" *ngIf="data.estadoRegistro == 'SIN CONFIRMAR'" (click)="openPayReserva(data)">{{data.estadoRegistro}}</span>
                                         </td>
                                         <td>{{data.nomLocalidad}}</td>
+                                        <td (click)="copyIDVenta(data)">{{data.venta_id}}</td>
+
 
                                       <td class="text-nowrap text-center">
                                           <!-- <button  class="cursor btn btn-warning mr-2" (click)="openEdit(data)" > <i class="fa fa-edit"> </i>  </button>  -->

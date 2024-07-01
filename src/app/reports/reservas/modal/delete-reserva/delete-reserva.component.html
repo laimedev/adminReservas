@@ -13,6 +13,18 @@
                     <mat-progress-bar mode="indeterminate"></mat-progress-bar>
                 </div>
             </div>
+
+
+
+            <div class="col-12 pt-4">
+                <mat-form-field appearance="outline" style="width: 100%;">
+                    <mat-icon matPrefix style="margin-left: 10px;">search</mat-icon>
+                    <input matInput placeholder="Ingrese el N° de reserva para poder eliminar" (keyup)="detectar(event)" #event />
+                  </mat-form-field>
+            </div>
+           
+
+
             <ng-template #elseBlock>
                 <div class="col-12">
                     Se eliminó correctamente
@@ -24,7 +36,8 @@
 </div>
 <div class="modal-footer">
     <button [disabled]="deleting" class="btn btn-success" (click)="closeModal()">CANCELAR</button>
-    <button [disabled]="deleting" *ngIf="deleted === false" class="btn btn-primary"
+    <!-- <button [disabled]="deleting" *ngIf="deleted === false" class="btn btn-primary" -->
+    <button [disabled]="deleting || matchKey" *ngIf="deleted === false" class="btn btn-primary"
     [ngClass]="{'btn-dark': (deleting === false), 'btn-warning': (deleting === true)}"
     (click)="delete()">
     <i *ngIf="deleting" class="fas fa-spin fa-cog"></i>

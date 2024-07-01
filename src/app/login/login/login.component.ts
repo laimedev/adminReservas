@@ -7,6 +7,8 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { Title } from '@angular/platform-browser';
+import { SnackbarHelper } from 'src/app/utils/helpers/snackbar-helper';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login',
@@ -30,6 +32,7 @@ export class LoginComponent implements OnInit {
     protected sessionStorage: SessionStorageService, 
     private route: ActivatedRoute,
     private router: Router,
+    private snackBar: MatSnackBar,
     private docTitleService: Title) { }
 
 
@@ -62,7 +65,12 @@ export class LoginComponent implements OnInit {
         this.router.navigate([this.returnUrl]);
         this.disableButton = false
       }, (e: HttpErrorResponse) => {
-        this.invalidUser = true
+        // this.invalidUser = true
+        SnackbarHelper.show(this.snackBar, { 
+          msg: 'Usuario y/o contraseña incorrecta', 
+          panelClass: ['custom-snackbar']
+      });
+
         this.disableButton = false
       })
     } else {
@@ -73,7 +81,12 @@ export class LoginComponent implements OnInit {
           this.router.navigate([this.returnUrl]);
           this.disableButton = false
         }, (e: HttpErrorResponse) => {
-          this.invalidUser = true
+          // this.invalidUser = true
+          SnackbarHelper.show(this.snackBar, { 
+            msg: 'Usuario y/o contraseña incorrecta', 
+            panelClass: ['custom-snackbar']
+        });
+
           this.disableButton = false
         })
     }
