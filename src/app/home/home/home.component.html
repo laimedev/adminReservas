@@ -38,7 +38,7 @@
 
 
         <div class="col-6">
-            <mat-form-field  class="w-100 pt-3" appearance="outline">
+            <!-- <mat-form-field  class="w-100 pt-3" appearance="outline">
                 <mat-label>Seleccione un cliente</mat-label>
                 <mat-select placeholder="Seleccione un cliente" (selectionChange)="onSelectionChange($event)">
                   <mat-select-filter [placeholder]="'Buscar cliente por nombres y dni'" [displayMember]="'nombreCompletoConDNI'" [array]="variables" (filteredReturn)="filteredList5 = $event"></mat-select-filter>
@@ -46,9 +46,44 @@
                     {{item.nombreCompletoConDNI}}
                   </mat-option>
                 </mat-select>
-            </mat-form-field>
+            </mat-form-field> -->
 
-            <p style="color: red; text-align: end;" *ngIf="idClientePublic === 0"><b>IMPORTANTE:</b> Seleccione un cliente.</p>
+
+            <!-- <mat-form-field class="w-100 pt-3" appearance="outline">
+              <mat-label>Number</mat-label>
+              <input type="text"
+                     placeholder="Pick one"
+                     aria-label="Number"
+                     matInput
+                     [formControl]="myControl"
+                     [matAutocomplete]="auto">
+              <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                  {{ option }}
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field> -->
+            
+
+            
+            <!-- <ng-select   [items]="people$ | async" bindLabel="name" autofocus bindValue="id" [(ngModel)]="selectedPersonId"> </ng-select> -->
+            <div style="padding-top: 20px;">
+              <ng-select [items]="people$ | async"
+              placeholder="Seleccione un cliente"
+              bindLabel="nombreCompletoConDNI"
+              bindValue="codCliente"
+              [(ngModel)]="idClientePublic"
+              (change)="onChange($event)" 
+              (search)="onSearch($event)" #event
+              >
+              </ng-select>
+            </div>
+
+ <!-- <br />Selected: {{ selectedPersonId }} -->
+
+ 
+
+            <p style="color: red; text-align: end;" *ngIf="idClientePublic === null"><b>IMPORTANTE:</b> Seleccione un cliente.</p>
         </div>
     </div>
 

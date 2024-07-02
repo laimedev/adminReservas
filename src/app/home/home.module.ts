@@ -14,7 +14,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { FormatdatePipe } from './pipes/formatdate.pipe';
 import { ReservaEditComponent } from './modals/reserva-edit/reserva-edit.component';
-
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
   declarations: [HomeComponent, GreetingPipe, TodayPipe, FormatdatePipe, ReservaEditComponent],
@@ -28,6 +29,8 @@ import { ReservaEditComponent } from './modals/reserva-edit/reserva-edit.compone
     MatCheckboxModule,
     MatSelectFilterModule,
     MatInputModule,
+    MatAutocompleteModule, 
+    NgSelectModule,
     MatIconModule
   ]
 })

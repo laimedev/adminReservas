@@ -28,6 +28,7 @@
     "@fullcalendar/list": "^6.1.11",
     "@fullcalendar/timegrid": "^6.1.11",
     "@ng-bootstrap/ng-bootstrap": "^6.1.0",
+    "@ng-select/ng-select": "^9.1.0",
     "bootstrap": "^4.5.0",
     "jquery": "^3.7.1",
     "mat-select-filter": "^2.4.1",

@@ -14,8 +14,12 @@ import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { firstValueFrom } from 'rxjs';
+import { Observable, firstValueFrom } from 'rxjs';
 import { ReservaEditComponent } from '../modals/reserva-edit/reserva-edit.component';
+import { FormControl } from '@angular/forms';
+
+import {map, startWith} from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-home',
@@ -27,7 +31,7 @@ export class HomeComponent implements OnInit {
   @ViewChild('reservationModal') reservationModal: any;
 
 
-  idClientePublic: number = 0;
+  idClientePublic: any = null;
 
   tipoFutbol: any = 7;
 
@@ -144,6 +148,20 @@ export class HomeComponent implements OnInit {
   currentEvents: EventApi[] = [];
 
 
+
+  myControl = new FormControl('');
+  options: string[] = ['One', 'Two', 'Three'];
+  filteredOptions!: Observable<string[]>;
+
+
+  // public people$?: any = [];
+  people$?: Observable<any[]>;
+
+	selectedPersonId = '';
+  events: any[] = [];
+	// selectedPersonId = '5a15b13c36e7a7f00cf0d7cb';
+
+
   constructor(protected loginService: LoginService,
     public reserveServices: ReserveService,
     private changeDetector: ChangeDetectorRef,
@@ -161,9 +179,20 @@ export class HomeComponent implements OnInit {
    }
 
   ngOnInit(): void {
+
+    
+    this.people$ = this.reserveServices.getPeople();
+
+
     this.obetenerCLientes();
     this.loadEvents();
     this.obetenerLocalidades();
+
+
+    this.filteredOptions = this.myControl.valueChanges.pipe(
+      startWith(''),
+      map(value => this._filter(value || '')),
+    );
    
 
     this.docTitleService.setTitle('Inicio - ' + environment.appTitle)
@@ -171,6 +200,11 @@ export class HomeComponent implements OnInit {
 
 
 
+  _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
+
+    return this.options.filter(option => option.toLowerCase().includes(filterValue));
+  }
 
   formatDateTime(dateTimeString: string): string {
     return moment(dateTimeString).format('YYYY-MM-DDTHH:mm');
@@ -492,7 +526,7 @@ console.log(this.localidadSelect)
 validateDateReserve(horainicio: any, fechRegistro: any, horafinal: any) {
   // const userData = JSON.parse(this.userDataJson ? this.userDataJson : '');
 
-   if(this.idClientePublic == 0) {
+   if(this.idClientePublic == null) {
     Swal.fire({
       // icon: 'warning',
       title: 'Seleccione un usuario',
@@ -806,7 +840,20 @@ onSelectionChange(event: any) {
   console.log(this.idClientePublic);
 }
 
+onChange($event: any) {
+  const eventX =  this.events.push({ name: '(change)', value: $event });
+  console.log($event);
+}
 
+
+onSearch($event: any) {
+  const eventX = this.events.push({ name: '(search)', value: $event });
+  // console.log(eventX);
+  console.log($event);
+  console.log($event.term);
+  this.nameClientSelect = $event.term.nombreCompletoConDNI;
+
+}
 
 
 }
