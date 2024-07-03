@@ -134,7 +134,7 @@ export class HomeComponent implements OnInit {
       // Obtener la duración de la selección en minutos
       const duration = (selectInfo.end.getTime() - selectInfo.start.getTime()) / (1000 * 60);
       // Permitir solo selecciones de 50 minutos
-      return duration === 60 || duration === 120 ;
+      return duration === 60 || duration === 120  || duration === 180 || duration === 240 || duration === 300 || duration === 360; 
     },
 
     slotLabelFormat: [
@@ -843,6 +843,7 @@ onSelectionChange(event: any) {
 onChange($event: any) {
   const eventX =  this.events.push({ name: '(change)', value: $event });
   console.log($event);
+  this.nameClientSelect = $event.nombreCompletoConDNI;
 }
 
 
@@ -851,7 +852,7 @@ onSearch($event: any) {
   // console.log(eventX);
   console.log($event);
   console.log($event.term);
-  this.nameClientSelect = $event.term.nombreCompletoConDNI;
+  // this.nameClientSelect = $event.term.nombreCompletoConDNI;
 
 }
 
