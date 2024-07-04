@@ -42,6 +42,22 @@ export class ReservaEditComponent implements OnInit {
   }
 
 
+  minutosAHoras(minutos: any) {
+    var horas = Math.floor(minutos / 60);
+    var minutosRestantes = minutos % 60;
+    if (horas === 0) {
+        return minutosRestantes + " minutos";
+    } else {
+        var resultado = horas + " horas";
+        if (minutosRestantes > 0) {
+            resultado += " y " + minutosRestantes + " minutos";
+        }
+        return resultado;
+    }
+  }
+
+  
+
   closeModal() {
     this.activeModal.close(true)
   }

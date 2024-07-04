@@ -61,12 +61,12 @@
           <div class="col-6" >
             <mat-form-field class="w-100" appearance="outline">
                 <mat-label>Tiempo de juego:</mat-label>
-                <!-- <mat-icon matSuffix>access_time</mat-icon>
-                <input type="text" id="timeGame" autocomplete="off" matInput  [(ngModel)]="data.duracion" name="timeGame" readonly > -->
-                <mat-select  value="110" >
+                <mat-icon matSuffix>access_time</mat-icon>
+                <input type="text" id="timeGame" autocomplete="off" matInput  [ngModel]="minutosAHoras(data.duracion)" name="timeGame" readonly >
+                <!-- <mat-select  value="110" >
                     <mat-option *ngFor="let data of times" [value]="data.time" >{{data.label}}
                     </mat-option>
-                </mat-select>
+                </mat-select> -->
             </mat-form-field>
           </div>
 

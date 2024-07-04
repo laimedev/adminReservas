@@ -66,7 +66,7 @@ export class HomeComponent implements OnInit {
     }
 
 
-    public valor: number = 50; // Inicializamos el valor en 50
+    public valor: number = 55; // Inicializamos el valor en 50
     isSumaDisabled: boolean = false; // Indica si el botón de suma está deshabilitado
     isRestaDisabled: boolean = true; // Indica si el botón de resta está deshabilitado
     payload: {
@@ -432,7 +432,8 @@ console.log(this.localidadSelect)
       if (isWithinValidTimeRange) {
         this.showReservationForm = true;
           this.reservationForm.startDateTime = this.formatDateTime(clickDate.start.toISOString());
-          const endDateTime = moment(clickDate.end.toISOString()).subtract(10, 'minutes').toISOString();
+          //descontar 5 minutos al tiempo final para que hagan mantenimiento
+          const endDateTime = moment(clickDate.end.toISOString()).subtract(5, 'minutes').toISOString();
           this.reservationForm.endDateTime = this.formatDateTime(endDateTime);
           //this.reservationForm.timeGame = this.calculateTimeDuration(
           //  new Date(this.reservationForm.startDateTime),
@@ -652,7 +653,7 @@ validatePrice(horainicio: any, fechRegistro: any, horafinal: any) {
       // Aquí puedes usar el precio obtenido para realizar cualquier acción necesaria antes de guardar la reserva
       let priceTime = response.resultado //this.calPriceTime(this.reservationForm.startDateTime,this.reservationForm.endDateTime,precio)
       this.reservationForm.price=response.resultado.resultado
-      this.reservationForm.timeGame = `${response.resultado.duracion} minuto(s)`
+      this.reservationForm.timeGame = `${this.minutosAHoras(response.resultado.duracion)}`
 
       console.log(this.reservationForm.price)
       this.showReservationForm = true; // Mostrar el formulario de reserva
@@ -855,6 +856,26 @@ onSearch($event: any) {
   // this.nameClientSelect = $event.term.nombreCompletoConDNI;
 
 }
+
+
+
+
+
+minutosAHoras(minutos: any) {
+  var horas = Math.floor(minutos / 60);
+  var minutosRestantes = minutos % 60;
+  if (horas === 0) {
+      return minutosRestantes + " minutos";
+  } else {
+      var resultado = horas + " horas";
+      if (minutosRestantes > 0) {
+          resultado += " y " + minutosRestantes + " minutos";
+      }
+      return resultado;
+  }
+}
+
+
 
 
 }
