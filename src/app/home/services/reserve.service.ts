@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable,  of } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { delay, switchMap } from 'rxjs/operators';
+import { delay, map, switchMap } from 'rxjs/operators';
 
 
 @Injectable({
@@ -21,18 +21,17 @@ export class ReserveService {
   }
 
 
-  getClientes(searchTerm?: any): Observable<any> {
-    // return this.http.get(`${this.apiUrl}client/listSelect`)
-    // Construir la URL de la solicitud
-    let url = `${this.apiUrl}client/listSelect`;
-    // Si se proporciona codSucursal, añadirlo a la URL como parámetro de consulta
-    if (searchTerm) {
-      url += `?searchTerm=${searchTerm}`;
-    }
-    // Realizar la solicitud HTTP GET
-    return this.http.get(url);
-    
+  getClientes(searchTerm?: any): Observable<any[]> {
+  let url = `${this.apiUrl}client/listSelect`;
+  if (searchTerm) {
+    url += `?searchTerm=${searchTerm}`;
   }
+  return this.http.get<any>(url).pipe(
+    // 👇 Extraemos solo `data`
+    map(response => response.data || [])
+  );
+}
+
 
   getLocalidad(codSucursal?: any): Observable<any> {
     // Construir la URL de la solicitud

@@ -68,15 +68,17 @@
             
             <!-- <ng-select   [items]="people$ | async" bindLabel="name" autofocus bindValue="id" [(ngModel)]="selectedPersonId"> </ng-select> -->
             <div style="padding-top: 20px;">
-              <ng-select [items]="people$ | async"
-              placeholder="Seleccione un cliente"
-              bindLabel="nombreCompletoConDNI"
-              bindValue="codCliente"
-              [(ngModel)]="idClientePublic"
-              (change)="onChange($event)" 
-              (search)="onSearch($event)" #event
-              >
-              </ng-select>
+            <ng-select
+  [items]="filteredList$ | async"
+  [typeahead]="searchInput$"
+  placeholder="Seleccione un cliente"
+  bindLabel="nombreCompletoConDNI"
+  bindValue="codCliente"
+  [(ngModel)]="idClientePublic"
+  (change)="onChange($event)">
+</ng-select>
+
+
             </div>
 
  <!-- <br />Selected: {{ selectedPersonId }} -->
@@ -197,7 +199,7 @@
                     <mat-form-field class="w-100" appearance="outline">
                         <mat-label>Precio:</mat-label>
                         <mat-icon matSuffix>attach_money</mat-icon>
-                        <input type="text" id="price" autocomplete="off" matInput  [(ngModel)]="reservationForm.price" name="price" readonly >
+                        <input type="text" id="price" autocomplete="off" matInput  [(ngModel)]="reservationForm.price" name="price"  >
                     </mat-form-field>
                   </div>
 

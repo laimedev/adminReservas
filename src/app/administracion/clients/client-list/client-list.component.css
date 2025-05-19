@@ -1,0 +1,134 @@
+.card-title-table {
+    font-size: 18px;
+    font-weight: 520;
+    margin: 0;
+    line-height: 1.2;
+  }
+  
+  td {
+    font-size: 12px;
+  }
+  
+  .custom-select-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+  }
+  
+  .form-select {
+    appearance: none;
+    width: 100%;
+    padding-right: 40px;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+  }
+  
+  .custom-icon-wrapper {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    width: 22px;
+    height: 22px;
+    background-color: #d2edf4;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+    color: #00BBE1;
+  }
+  
+  .custom-icon-wrapper i {
+    color: #1c1f8a;
+    font-size: 12px;
+    line-height: 1;
+    border-radius: 5px;
+  }
+  
+  .form-control-custom,
+  .form-select-custom {
+    border: 2px solid #D9ECF2;
+    background-color: #F9FDFF;
+    font-size: 14px;
+    padding: 10px 15px;
+    border-radius: 8px;
+    height: 40px;
+    appearance: none;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .form-control-custom:focus,
+  .form-select-custom:focus {
+    border-color: #D9ECF2;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    outline: none;
+  }
+  
+  .form-control-custom::placeholder,
+  .form-select-custom option {
+    color: #95a5a6;
+  }
+  
+  .btn-consulting,
+  .btn-create {
+    border: none;
+    color: #fff;
+    border-radius: 10px;
+    padding: 8px 20px;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-consulting {
+    background-color: #12D0B6;
+  }
+  
+  .btn-create {
+    background-color: #1C1F8A;
+  }
+  
+  .table thead {
+    background-color: #E3F9F8;
+    color: #807c7c;
+    border-left: 5px solid #18F0FF;
+    border-right: 5px solid #18F0FF;
+  }
+  
+  .selected-row,
+  tr:hover:not(.suborder-row) {
+    border-left: 5px solid #ff7818;
+    border-right: 5px solid #ff7818;
+  }
+  
+  tr:hover:not(.suborder-row) {
+    cursor: pointer;
+    background-color: #FFF2F2;
+  }
+  
+  /* Evita efectos de hover solo en <thead> */
+.table-primary tr:hover {
+  background-color: inherit !important;
+  border-left: 5px solid #18F0FF;
+    border-right: 5px solid #18F0FF;
+  cursor: default !important;
+}
+
+
+
+
+
+  .page-item.active .page-link {
+    z-index: 3;
+    color: #fff;
+    background-color: #1c1f8a;
+    border-color: #1c1f8a;
+  }
+  
+  .page-link {
+    color: #1c1f8a;
+  }
+  
+
+

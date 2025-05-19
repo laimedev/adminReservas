@@ -14,11 +14,11 @@ import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, firstValueFrom } from 'rxjs';
+import { Observable, Subject, firstValueFrom, of } from 'rxjs';
 import { ReservaEditComponent } from '../modals/reserva-edit/reserva-edit.component';
 import { FormControl } from '@angular/forms';
 
-import {map, startWith} from 'rxjs/operators';
+import {catchError, debounceTime, distinctUntilChanged, map, startWith, switchMap} from 'rxjs/operators';
 
 
 @Component({
@@ -39,7 +39,8 @@ export class HomeComponent implements OnInit {
 
   public variables: any[] = [];
   public filteredList5: any[] = [];
-    
+   public filteredList$!: Observable<any[]>;
+
   public codSucursalSelect: number = 1;
   public nameClientSelect: any = '';
 
@@ -162,6 +163,11 @@ export class HomeComponent implements OnInit {
 	// selectedPersonId = '5a15b13c36e7a7f00cf0d7cb';
 
 
+
+   searchInput$ = new Subject<string>();
+
+
+
   constructor(protected loginService: LoginService,
     public reserveServices: ReserveService,
     private changeDetector: ChangeDetectorRef,
@@ -181,10 +187,18 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
 
     
-    this.people$ = this.reserveServices.getPeople();
+    this.filteredList$ = this.searchInput$.pipe(
+      startWith(''), // para que cargue al iniciar
+      debounceTime(300),
+      distinctUntilChanged(),
+      switchMap(term =>
+        this.reserveServices.getClientes(term).pipe(
+          catchError(() => of([])) // prevenir errores de carga
+        )
+      )
+    );
 
 
-    this.obetenerCLientes();
     this.loadEvents();
     this.obetenerLocalidades();
 
@@ -825,7 +839,7 @@ openReservationModal() {
 }
 
 obetenerCLientes(){
-  this.reserveServices.getClientes().subscribe(resp => {
+  this.reserveServices.getClientes().subscribe((resp: any) => {
     this.variables = resp.data;
     this.filteredList5 = this.variables.slice();
   })
@@ -841,11 +855,12 @@ onSelectionChange(event: any) {
   console.log(this.idClientePublic);
 }
 
-onChange($event: any) {
-  const eventX =  this.events.push({ name: '(change)', value: $event });
-  console.log($event);
-  this.nameClientSelect = $event.nombreCompletoConDNI;
-}
+ onChange($event: any) {
+    console.log('Seleccionado:', $event);
+    if ($event) {
+      this.nameClientSelect = $event.nombreCompletoConDNI;
+    }
+  }
 
 
 onSearch($event: any) {
